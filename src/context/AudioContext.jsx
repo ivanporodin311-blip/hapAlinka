@@ -1,3 +1,4 @@
+// src/context/AudioContext.jsx
 import React, { createContext, useState, useContext, useRef, useEffect } from 'react';
 
 const AudioContext = createContext();
@@ -8,8 +9,11 @@ export const AudioProvider = ({ children }) => {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio());
+  
+  // Базовый URL для GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL || '';
 
-  // Устанавливаем максимальную громкость 35% (0.35)
+  // Устанавливаем максимальную громкость 15% (0.15)
   const MAX_VOLUME = 0.15;
 
   const tracks = [
@@ -17,19 +21,19 @@ export const AudioProvider = ({ children }) => {
       id: 1,
       title: 'BLUE',
       artist: 'Billie Eilish',
-      audioUrl: '/music/Billie_Eilish_-_BLUE_78654770.mp3'
+      audioUrl: `${baseUrl}music/Billie_Eilish_-_BLUE_78654770.mp3`
     },
     {
       id: 2,
       title: 'We Found Love',
       artist: 'Rihanna',
-      audioUrl: '/music/Rihanna_Calvin_Harris_-_We_Found_Love_48211612.mp3'
+      audioUrl: `${baseUrl}music/Rihanna_Calvin_Harris_-_We_Found_Love_48211612.mp3`
     },
     {
       id: 3,
       title: 'Forever (feat. Mario Winans)',
       artist: 'Тимати',
-      audioUrl: '/music/Тимати - Forever (feat. Mario Winans) (hitmos.fm).mp3'
+      audioUrl: `${baseUrl}music/Тимати - Forever (feat. Mario Winans) (hitmos.fm).mp3`
     }
   ];
 
@@ -49,7 +53,7 @@ export const AudioProvider = ({ children }) => {
       }
     } else {
       audioRef.current.src = track.audioUrl;
-      audioRef.current.volume = MAX_VOLUME; // Устанавливаем громкость для нового трека
+      audioRef.current.volume = MAX_VOLUME;
       audioRef.current.play();
       setCurrentTrack(track);
       setIsPlaying(true);
@@ -62,9 +66,17 @@ export const AudioProvider = ({ children }) => {
     setIsPlaying(false);
   };
 
-  // Очистка при размонтировании
+  // Обработка ошибок загрузки
   useEffect(() => {
+    const handleError = (e) => {
+      console.error('Audio error:', e);
+      console.error('Failed URL:', audioRef.current.src);
+    };
+    
+    audioRef.current.addEventListener('error', handleError);
+    
     return () => {
+      audioRef.current.removeEventListener('error', handleError);
       audioRef.current.pause();
     };
   }, []);
