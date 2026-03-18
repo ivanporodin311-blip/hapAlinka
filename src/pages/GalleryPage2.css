@@ -73,6 +73,21 @@
   grid-column: 1 / 5;
 }
 
+.gallery2-grid__item:nth-child(17) {
+  grid-column: 1 / 4;
+}
+
+
+
+.gallery2-grid__item:nth-child(19) {
+  grid-column: 4 / 5;
+}
+
+.gallery2-grid__item:nth-child(18) {
+  grid-row: span 3  ;
+  grid-column: span 2;
+}
+
 /* Модальное окно */
 .gallery2-modal {
   position: fixed !important;

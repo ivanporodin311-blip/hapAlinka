@@ -57,31 +57,6 @@ const HomePage = () => {
               <span>Исполнения желаний</span>
             </div>
           </div>
-
-          {/* Ссылки на галереи */}
-          <div style={styles.galleriesSection}>
-            <h2 style={styles.galleriesTitle}>📸 Наши галереи</h2>
-            <div style={styles.cards}>
-              <Link to="/gallery" style={styles.card}>
-                <h3 style={styles.cardTitle}>Галерея 2022-2026</h3>
-                <p style={styles.cardText}>Все фотографии за последние годы</p>
-              </Link>
-              
-              <Link to="/gallery2" style={styles.card}>
-                <h3 style={styles.cardTitle}>👶 Детские фото</h3>
-                <p style={styles.cardText}>Милые моменты из детства</p>
-              </Link>
-              
-              <Link to="/gallery3" style={styles.card}>
-                <h3 style={styles.cardTitle}>💼 Рабочие моменты</h3>
-                <p style={styles.cardText}>Фото с работы и учёбы</p>
-              </Link>
-            </div>
-          </div>
-
-          <Link to="/music" style={styles.musicButton}>
-            🎵 Включить музыку
-          </Link>
         </div>
       </div>
     </div>
