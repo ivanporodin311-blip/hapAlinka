@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AudioProvider } from "./context/AudioContext";
 import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
-import GalleryPage from "./pages/GalleryPage"; // Импортируем GalleryPage вместо MorphingPage
-import GalleryPage2 from "./pages/GalleryPage2"; // Импортируем вторую галерею
+import GalleryPage from "./pages/GalleryPage";
+import GalleryPage2 from "./pages/GalleryPage2";
 import GalleryPage3 from "./pages/GalleryPage3";
 import MusicPage from "./pages/MusicPage";
 import Silk from "./components/Silk";
@@ -11,7 +11,8 @@ import Silk from "./components/Silk";
 function App() {
   return (
     <AudioProvider>
-      <BrowserRouter>
+      {/* 👇 ДОБАВЬТЕ basename ВОТ СЮДА */}
+      <BrowserRouter basename="/hapAlinka">
         {/* Silk фон на весь экран */}
         <div style={styles.background}>
           <Silk
@@ -28,9 +29,9 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/vabe" element={<GalleryPage />} /> {/* Заменяем /morphing на /gallery */}
-            <Route path="/baby" element={<GalleryPage2 />} /> {/* Новый маршрут */}
-            <Route path="/jobik" element={<GalleryPage3 />} /> {/* Новый маршрут */}
+            <Route path="/vabe" element={<GalleryPage />} />
+            <Route path="/baby" element={<GalleryPage2 />} />
+            <Route path="/jobik" element={<GalleryPage3 />} />
             <Route path="/music" element={<MusicPage />} />
           </Routes>
         </div>
@@ -52,7 +53,6 @@ const styles = {
     position: 'relative',
     zIndex: 1,
     minHeight: '100vh',
-
   }
 };
 
