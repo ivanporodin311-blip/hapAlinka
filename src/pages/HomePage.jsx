@@ -6,16 +6,14 @@ const HomePage = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Анимация появления
     setIsVisible(true);
   }, []);
 
-  // Базовый URL для GitHub Pages
+  // ВАЖНО: используем import.meta.env.BASE_URL
   const baseUrl = import.meta.env.BASE_URL || '';
 
   return (
     <div style={styles.container}>
-      {/* Основной блок с поздравлением */}
       <div style={{
         ...styles.birthdaySection,
         opacity: isVisible ? 1 : 0,
@@ -31,6 +29,7 @@ const HomePage = () => {
           <div style={styles.photoGlow}></div>
         </div>
 
+        {/* Остальной код без изменений */}
         <div style={styles.birthdayContent}>
           <h1 style={styles.birthdayTitle}>
             С Днём Рождения, Андросова Алина Алексеевна! 🎉
@@ -42,9 +41,6 @@ const HomePage = () => {
             Пусть каждый день приносит радость, а мечты обязательно сбываются!
             Этот сайт - маленький подарок, созданный с любовью и теплом, чтобы сделать твой день ещё ярче. 
             Наслаждайся каждым моментом и помни, что ты невероятная! 💖
-            Ты сможешь в любой момент вернуться сюда и увидеть все эти пожелания, а также насладиться галереями 
-            и музыкой, которые я для тебя подготовила. С праздником! 🎂
-            Прежде чем начать, предлагаю включить музыку, чтобы создать атмосферу праздника! 🎶
           </p>
 
           <div style={styles.wishList}>
@@ -83,7 +79,6 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Кнопка для музыки */}
           <Link to="/music" style={styles.musicButton}>
             🎵 Включить музыку
           </Link>
@@ -93,6 +88,7 @@ const HomePage = () => {
   );
 };
 
+// Стили остаются без изменений
 const styles = {
   container: {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
