@@ -10,6 +10,9 @@ const HomePage = () => {
     setIsVisible(true);
   }, []);
 
+  // Базовый URL для GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL || '';
+
   return (
     <div style={styles.container}>
       {/* Основной блок с поздравлением */}
@@ -21,7 +24,7 @@ const HomePage = () => {
       }}>
         <div style={styles.photoFrame}>
           <img 
-            src='/images/photo_2025-06-17_00-31-29.jpg' 
+            src={`${baseUrl}images/photo_2025-06-17_00-31-29.jpg`}
             alt="Именинник"
             style={styles.photo}
           />
@@ -30,15 +33,17 @@ const HomePage = () => {
 
         <div style={styles.birthdayContent}>
           <h1 style={styles.birthdayTitle}>
-            С Днём Рождения, Андросова Алина Алексеевна!🎉
+            С Днём Рождения, Андросова Алина Алексеевна! 🎉
           </h1>
           
           <p style={styles.birthdayMessage}>
             В этот особенный день хочется пожелать тебе<br />
             <span style={styles.highlight}>счастья, здоровья и вдохновения</span><br />
             Пусть каждый день приносит радость, а мечты обязательно сбываются!
-            Этот сайт - маленький подарок, созданный с любовью и теплом, чтобы сделать твой день ещё ярче. Наслаждайся каждым моментом и помни, что ты невероятная! 💖
-            Ты сможешь в любой момент вернуться сюда и увидеть все эти пожелания, а также насладиться галереями и музыкой, которые я для тебя подготовила. С праздником! 🎂
+            Этот сайт - маленький подарок, созданный с любовью и теплом, чтобы сделать твой день ещё ярче. 
+            Наслаждайся каждым моментом и помни, что ты невероятная! 💖
+            Ты сможешь в любой момент вернуться сюда и увидеть все эти пожелания, а также насладиться галереями 
+            и музыкой, которые я для тебя подготовила. С праздником! 🎂
             Прежде чем начать, предлагаю включить музыку, чтобы создать атмосферу праздника! 🎶
           </p>
 
@@ -57,6 +62,31 @@ const HomePage = () => {
             </div>
           </div>
 
+          {/* Ссылки на галереи */}
+          <div style={styles.galleriesSection}>
+            <h2 style={styles.galleriesTitle}>📸 Наши галереи</h2>
+            <div style={styles.cards}>
+              <Link to="/gallery" style={styles.card}>
+                <h3 style={styles.cardTitle}>Галерея 2022-2026</h3>
+                <p style={styles.cardText}>Все фотографии за последние годы</p>
+              </Link>
+              
+              <Link to="/gallery2" style={styles.card}>
+                <h3 style={styles.cardTitle}>👶 Детские фото</h3>
+                <p style={styles.cardText}>Милые моменты из детства</p>
+              </Link>
+              
+              <Link to="/gallery3" style={styles.card}>
+                <h3 style={styles.cardTitle}>💼 Рабочие моменты</h3>
+                <p style={styles.cardText}>Фото с работы и учёбы</p>
+              </Link>
+            </div>
+          </div>
+
+          {/* Кнопка для музыки */}
+          <Link to="/music" style={styles.musicButton}>
+            🎵 Включить музыку
+          </Link>
         </div>
       </div>
     </div>
@@ -69,17 +99,18 @@ const styles = {
     color: 'white',
     textAlign: 'center',
     position: 'relative',
-    minHeight: '100vh'
+    minHeight: '100vh',
+    padding: '20px'
   },
 
-  // Секция с днём рождения
   birthdaySection: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '4rem',
     margin: '2rem auto 4rem',
-    maxWidth: '1000px',
+    maxWidth: '1200px',
     padding: '2rem',
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     backdropFilter: 'blur(10px)',
@@ -95,7 +126,8 @@ const styles = {
     borderRadius: '50%',
     overflow: 'hidden',
     boxShadow: '0 10px 30px rgba(221, 0, 255, 0.3)',
-    animation: 'float 6s ease-in-out infinite'
+    animation: 'float 6s ease-in-out infinite',
+    flexShrink: 0
   },
 
   photo: {
@@ -113,7 +145,8 @@ const styles = {
     bottom: 0,
     borderRadius: '50%',
     boxShadow: 'inset 0 0 50px rgba(221, 0, 255, 0.5)',
-    animation: 'pulse 3s ease-in-out infinite'
+    animation: 'pulse 3s ease-in-out infinite',
+    pointerEvents: 'none'
   },
 
   birthdayContent: {
@@ -122,7 +155,7 @@ const styles = {
   },
 
   birthdayTitle: {
-    fontSize: '3rem',
+    fontSize: '2.5rem',
     marginBottom: '1.5rem',
     background: 'linear-gradient(45deg, #dd00ff, #ffaa00)',
     WebkitBackgroundClip: 'text',
@@ -131,14 +164,14 @@ const styles = {
   },
 
   birthdayMessage: {
-    fontSize: '1.3rem',
-    lineHeight: '1.8',
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
     marginBottom: '2rem',
     color: 'rgba(255, 255, 255, 0.9)'
   },
 
   highlight: {
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     fontWeight: 'bold',
     background: 'linear-gradient(45deg, #ffaa00, #dd00ff)',
     WebkitBackgroundClip: 'text',
@@ -169,46 +202,24 @@ const styles = {
     fontSize: '2rem'
   },
 
-  signature: {
-    fontSize: '1.2rem',
-    fontStyle: 'italic',
-    color: 'rgba(255, 255, 255, 0.7)',
-    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-    paddingTop: '1rem',
-    marginTop: '1rem'
+  galleriesSection: {
+    marginBottom: '2rem'
   },
 
-  // Секция с лабораторной работой
-  labSection: {
-    marginTop: '4rem',
-    padding: '2rem',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    backdropFilter: 'blur(5px)',
-    borderRadius: '20px'
-  },
-
-  labTitle: {
+  galleriesTitle: {
     fontSize: '2rem',
-    marginBottom: '0.5rem',
-    background: 'linear-gradient(90deg, #ff7e5f, #feb47b)',
+    marginBottom: '1.5rem',
+    background: 'linear-gradient(45deg, #dd00ff, #ffaa00)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    display: 'inline-block'
-  },
-
-  labSubtitle: {
-    fontSize: '1rem',
-    marginBottom: '2rem',
-    opacity: 0.8
+    textAlign: 'center'
   },
 
   cards: {
     display: 'flex',
-    gap: '2rem',
+    gap: '1.5rem',
     justifyContent: 'center',
-    flexWrap: 'wrap',
-    maxWidth: '1200px',
-    margin: '0 auto'
+    flexWrap: 'wrap'
   },
 
   card: {
@@ -216,16 +227,12 @@ const styles = {
     backdropFilter: 'blur(10px)',
     borderRadius: '15px',
     padding: '1.5rem',
-    width: '250px',
+    width: '200px',
     textDecoration: 'none',
     color: 'white',
-    transition: 'transform 0.3s ease, backgroundColor 0.3s ease',
+    transition: 'all 0.3s ease',
     border: '1px solid rgba(255, 255, 255, 0.1)',
-    cursor: 'pointer',
-    ':hover': {
-      transform: 'translateY(-5px)',
-      backgroundColor: 'rgba(255, 255, 255, 0.15)'
-    }
+    textAlign: 'center'
   },
 
   cardTitle: {
@@ -241,7 +248,7 @@ const styles = {
 
   musicButton: {
     display: 'inline-block',
-    marginTop: '2rem',
+    marginTop: '1rem',
     padding: '1rem 2rem',
     background: 'linear-gradient(45deg, #dd00ff, #ffaa00)',
     color: 'white',
@@ -249,13 +256,10 @@ const styles = {
     borderRadius: '30px',
     fontSize: '1.2rem',
     fontWeight: 'bold',
-    transition: 'transform 0.3s ease, boxShadow 0.3s ease',
+    transition: 'all 0.3s ease',
     border: 'none',
     cursor: 'pointer',
-    ':hover': {
-      transform: 'scale(1.05)',
-      boxShadow: '0 0 30px rgba(221, 0, 255, 0.5)'
-    }
+    textAlign: 'center'
   }
 };
 
