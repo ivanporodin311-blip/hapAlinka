@@ -5,99 +5,106 @@ import './GalleryPage2.css';
 const GalleryPage2 = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // Базовый URL для GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL || '';
+
   const images = [
-  {
-    id: 1,
-    src: '/baby/photo_2024-11-05_23-45-29.jpg',
-    alt: 'Фото 2024'
-  },
-  {
-    id: 2,
-    src: '/baby/photo_2024-12-01_21-55-18.jpg',
-    alt: 'Фото 2024'
-  },
-  {
-    id: 3,
-    src: '/baby/photo_2024-12-01_22-00-00.jpg',
-    alt: 'Фото 2024'
-  },
-  {
-    id: 4,
-    src: '/baby/photo_2025-03-05_10-51-10.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 5,
-    src: '/baby/photo_2025-03-05_10-52-33.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 6,
-    src: '/baby/photo_2025-03-05_11-07-40 (2).jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 7,
-    src: '/baby/photo_2025-03-05_11-07-40.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 8,
-    src: '/baby/photo_2025-03-05_11-07-41 (2).jpg',
-    alt: 'Фото 2025'
-  },
- 
-  {
-    id: 10,
-    src: '/baby/photo_2025-03-05_11-07-42 (2).jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 11,
-    src: '/baby/photo_2025-03-05_11-07-42.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 12,
-    src: '/baby/photo_2025-03-05_11-07-43 (2).jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 13,
-    src: '/baby/photo_2025-03-05_11-07-43 (3).jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 14,
-    src: '/baby/photo_2025-03-05_11-07-43.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 15,
-    src: '/baby/photo_2025-03-05_11-07-44 (2).jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 16,
-    src: '/baby/photo_2025-03-05_11-07-44.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 17,
-    src: '/baby/photo_2025-03-05_11-07-45 (2).jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 18,
-    src: '/baby/photo_2025-03-05_11-07-45.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 19,
-    src: '/baby/photo_2025-03-29_21-28-58.jpg',
-    alt: 'Фото 2025'
-  }
-];
+    {
+      id: 1,
+      src: `${baseUrl}baby/photo_2024-11-05_23-45-29.jpg`,
+      alt: 'Фото 2024'
+    },
+    {
+      id: 2,
+      src: `${baseUrl}baby/photo_2024-12-01_21-55-18.jpg`,
+      alt: 'Фото 2024'
+    },
+    {
+      id: 3,
+      src: `${baseUrl}baby/photo_2024-12-01_22-00-00.jpg`,
+      alt: 'Фото 2024'
+    },
+    {
+      id: 4,
+      src: `${baseUrl}baby/photo_2025-03-05_10-51-10.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 5,
+      src: `${baseUrl}baby/photo_2025-03-05_10-52-33.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 6,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-40 (2).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 7,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-40.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 8,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-41 (2).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 9,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-41.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 10,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-42 (2).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 11,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-42.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 12,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-43 (2).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 13,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-43 (3).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 14,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-43.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 15,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-44 (2).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 16,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-44.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 17,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-45 (2).jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 18,
+      src: `${baseUrl}baby/photo_2025-03-05_11-07-45.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 19,
+      src: `${baseUrl}baby/photo_2025-03-29_21-28-58.jpg`,
+      alt: 'Фото 2025'
+    }
+  ];
 
   return (
     <div className="gallery2-page">
@@ -124,12 +131,15 @@ const GalleryPage2 = () => {
         >
           <img 
             src={selectedImage} 
-            alt="Large"
+            alt="Large view"
             className="gallery2-modal__image"
           />
           <button 
             className="gallery2-modal__close"
-            onClick={() => setSelectedImage(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(null);
+            }}
           >
             ×
           </button>

@@ -5,48 +5,52 @@ import './GalleryPage3.css';
 const GalleryPage3 = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // Базовый URL для GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL || '';
+
   const images = [
-  {
-    id: 1,
-    src: '/job/photo_2025-02-14_14-21-19.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 2,
-    src: '/job/photo_2025-02-21_13-37-38.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 3,
-    src: '/job/photo_2025-03-29_21-28-58.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 4,
-    src: '/job/photo_2025-03-29_21-29-09.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 5,
-    src: '/job/photo_2025-04-18_13-42-35.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 7,
-    src: '/job/photo_2025-05-02_11-13-46.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 8,
-    src: '/job/photo_2025-09-19_14-35-57.jpg',
-    alt: 'Фото 2025'
-  },
-  {
-    id: 6,
-    src: '/job/photo_2025-09-19_14-35-59.jpg',
-    alt: 'Фото 2025'
-  }
-];
+    {
+      id: 1,
+      src: `${baseUrl}job/photo_2025-02-14_14-21-19.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 2,
+      src: `${baseUrl}job/photo_2025-02-21_13-37-38.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 3,
+      src: `${baseUrl}job/photo_2025-03-29_21-28-58.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 4,
+      src: `${baseUrl}job/photo_2025-03-29_21-29-09.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 5,
+      src: `${baseUrl}job/photo_2025-04-18_13-42-35.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 6,
+      src: `${baseUrl}job/photo_2025-05-02_11-13-46.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 7,
+      src: `${baseUrl}job/photo_2025-09-19_14-35-57.jpg`,
+      alt: 'Фото 2025'
+    },
+    {
+      id: 8,
+      src: `${baseUrl}job/photo_2025-09-19_14-35-59.jpg`,
+      alt: 'Фото 2025'
+    }
+  ];
+
   return (
     <div className="gallery3-page">
       <main className="gallery3-grid">
@@ -72,12 +76,15 @@ const GalleryPage3 = () => {
         >
           <img 
             src={selectedImage} 
-            alt="Large"
+            alt="Large view"
             className="gallery3-modal__image"
           />
           <button 
             className="gallery3-modal__close"
-            onClick={() => setSelectedImage(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(null);
+            }}
           >
             ×
           </button>
