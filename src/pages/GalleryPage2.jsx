@@ -98,8 +98,49 @@ const GalleryPage2 = () => {
       id: 19,
       src: `${baseUrl}baby/photo_2025-03-29_21-28-58.jpg`,
       alt: 'Фото 2025'
+    },
+    // Новые фотографии
+    {
+      id: 20,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-07 (2).jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 21,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-07.jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 22,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-08 (2).jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 23,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-08 (3).jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 24,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-08 (4).jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 25,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-08 (5).jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 26,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-08 (6).jpg`,
+      alt: 'Фото 2026'
+    },
+    {
+      id: 27,
+      src: `${baseUrl}baby/photo_2026-03-20_00-06-09.jpg`,
+      alt: 'Фото 2026'
     }
-  ];
+];
 
   return (
     <div className="gallery2-page">

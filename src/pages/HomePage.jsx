@@ -260,64 +260,210 @@ style.textContent = `
     box-shadow: 0 0 30px rgba(221, 0, 255, 0.5);
   }
 
-  /* Медиазапрос для мобильных устройств - используем классы! */
   @media (max-width: 768px) {
-    .birthday-section {
+  .birthday-section {
     flex-direction: column !important;
     gap: 2rem !important;
-    margin: 1rem 0 2rem 0 !important; /* Убрали auto, оставили вертикальные отступы */
+    margin: 1rem 0 2rem 0 !important;
     padding: 1.5rem !important;
     width: 100% !important;
-    border-radius: 20px !important; /* Чуть меньше скругление на мобильных */
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
   }
-    
-    .photo-frame {
-      width: 250px !important;
-      height: 250px !important;
-      margin-top: 1rem !important;
-    }
-    
-    .birthday-content {
-      text-align: center !important;
-    }
-    
-    .birthday-title {
-      font-size: 2rem !important;
-    }
-    
-    .birthday-message {
-      font-size: 1rem !important;
-      line-height: 1.5 !important;
-    }
-    
-    .wish-list {
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 0.5rem !important;
-    }
-    
-    .wish-item {
-      padding: 0.8rem !important;
-    }
-    
-    .wish-emoji {
-      font-size: 1.5rem !important;
-    }
-    
-    .cards {
-      gap: 1rem !important;
-    }
-    
-    .card {
-      width: 160px !important;
-      padding: 1rem !important;
-    }
-    
-    .music-button {
-      margin-top: 0.5rem !important;
-      padding: 0.8rem 1.5rem !important;
-      font-size: 1rem !important;
-    }
+  
+  .photo-frame {
+    width: 250px !important;
+    height: 250px !important;
+    margin-top: 1rem !important;
   }
+  
+  .birthday-content {
+    text-align: center !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .birthday-title {
+    font-size: 2rem !important;
+    word-wrap: break-word !important;
+    max-width: 100% !important;
+  }
+  
+  .birthday-message {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    padding: 0 5px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .highlight {
+    font-size: 1.2rem !important;
+    word-wrap: break-word !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+  
+  .wish-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    padding: 0 5px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .wish-item {
+    padding: 0.8rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .wish-item span {
+    word-wrap: break-word !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .wish-emoji {
+    font-size: 1.5rem !important;
+  }
+  
+  .cards {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+  }
+  
+  .card {
+    width: 180px !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+    margin: 0.5rem !important;
+  }
+  
+  .card-title {
+    word-wrap: break-word !important;
+    font-size: 1rem !important;
+  }
+  
+  .card-text {
+    word-wrap: break-word !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .music-button {
+    margin-top: 0.5rem !important;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 1rem !important;
+    max-width: 90% !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards {
+    gap: 0.5rem !important;
+  }
+  
+  .card {
+    width: 150px !important;
+    padding: 0.8rem !important;
+    margin: 0.3rem !important;
+  }
+  
+  .wish-list {
+    gap: 0.3rem !important;
+  }
+  
+  .wish-item {
+    padding: 0.6rem !important;
+  }
+  
+  .wish-item span {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .cards {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .card {
+    width: 100% !important;
+    max-width: 250px !important;
+  }
+  
+  .wish-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 380px) {
+  .cards {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  .card {
+    width: 90% !important;
+    max-width: 280px !important;
+    margin: 0.5rem auto !important; /* auto по бокам для центрирования */
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+  
+  .birthday-section {
+    padding: 1rem !important;
+    margin: 1rem auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .birthday-content {
+    padding: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .wish-list {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Одна колонка */
+    gap: 0.5rem !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important; /* Центрируем */
+  }
+  
+  .wish-item {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.8rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  .photo-frame {
+    margin: 0 auto !important; /* Центрируем фото */
+  }
+}
 `;
 document.head.appendChild(style);
 
