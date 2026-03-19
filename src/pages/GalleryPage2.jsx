@@ -50,11 +50,6 @@ const GalleryPage2 = () => {
       alt: 'Фото 2025'
     },
     {
-      id: 9,
-      src: `${baseUrl}baby/photo_2025-03-05_11-07-41.jpg`,
-      alt: 'Фото 2025'
-    },
-    {
       id: 10,
       src: `${baseUrl}baby/photo_2025-03-05_11-07-42 (2).jpg`,
       alt: 'Фото 2025'

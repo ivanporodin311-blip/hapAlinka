@@ -9,51 +9,50 @@ const HomePage = () => {
     setIsVisible(true);
   }, []);
 
-  // ВАЖНО: используем import.meta.env.BASE_URL
   const baseUrl = import.meta.env.BASE_URL || '';
 
   return (
-    <div style={styles.container}>
-      <div style={{
+    <div className="home-container" style={styles.container}>
+      <div className="birthday-section" style={{
         ...styles.birthdaySection,
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
         transition: 'opacity 1s ease, transform 1s ease'
       }}>
-        <div style={styles.photoFrame}>
+        <div className="photo-frame" style={styles.photoFrame}>
           <img 
             src={`${baseUrl}images/photo_2025-06-17_00-31-29.jpg`}
             alt="Именинник"
+            className="photo"
             style={styles.photo}
           />
-          <div style={styles.photoGlow}></div>
+          <div className="photo-glow" style={styles.photoGlow}></div>
         </div>
 
-        {/* Остальной код без изменений */}
-        <div style={styles.birthdayContent}>
-          <h1 style={styles.birthdayTitle}>
+        <div className="birthday-content" style={styles.birthdayContent}>
+          <h1 className="birthday-title" style={styles.birthdayTitle}>
             С Днём Рождения, Андросова Алина Алексеевна! 🎉
           </h1>
           
-          <p style={styles.birthdayMessage}>
+          <p className="birthday-message" style={styles.birthdayMessage}>
             В этот особенный день хочется пожелать тебе<br />
-            <span style={styles.highlight}>счастья, здоровья и вдохновения</span><br />
+            <span className="highlight" style={styles.highlight}>счастья, здоровья и вдохновения</span><br />
             Пусть каждый день приносит радость, а мечты обязательно сбываются!
             Этот сайт - маленький подарок, созданный с любовью и теплом, чтобы сделать твой день ещё ярче. 
             Наслаждайся каждым моментом и помни, что ты невероятная! 💖
           </p>
 
-          <div style={styles.wishList}>
-            <div style={styles.wishItem}>
-              <span style={styles.wishEmoji}>✨</span>
+          <div className="wish-list" style={styles.wishList}>
+            <div className="wish-item" style={styles.wishItem}>
+              <span className="wish-emoji" style={styles.wishEmoji}>✨</span>
               <span>Творческих успехов</span>
             </div>
-            <div style={styles.wishItem}>
-              <span style={styles.wishEmoji}>🌟</span>
+            <div className="wish-item" style={styles.wishItem}>
+              <span className="wish-emoji" style={styles.wishEmoji}>🌟</span>
               <span>Ярких впечатлений</span>
             </div>
-            <div style={styles.wishItem}>
-              <span style={styles.wishEmoji}>💫</span>
+            <div className="wish-item" style={styles.wishItem}>
+              <span className="wish-emoji" style={styles.wishEmoji}>💫</span>
               <span>Исполнения желаний</span>
             </div>
           </div>
@@ -63,15 +62,18 @@ const HomePage = () => {
   );
 };
 
-// Стили остаются без изменений
 const styles = {
-  container: {
+    container: {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     color: 'white',
     textAlign: 'center',
     position: 'relative',
     minHeight: '100vh',
-    padding: '20px'
+    padding: '20px',
+    width: '100%',
+    maxWidth: '100%',
+    overflowX: 'hidden',
+    boxSizing: 'border-box'
   },
 
   birthdaySection: {
@@ -80,14 +82,15 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '4rem',
-    margin: '2rem auto 4rem',
-    maxWidth: '1200px',
+    margin: '2rem 0 4rem 0', // Изменено: убрал auto
+    width: '100%', // Добавлено
     padding: '2rem',
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     backdropFilter: 'blur(10px)',
     borderRadius: '30px',
     border: '1px solid rgba(255, 255, 255, 0.1)',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+    boxSizing: 'border-box' // Добавлено
   },
 
   photoFrame: {
@@ -234,7 +237,7 @@ const styles = {
   }
 };
 
-// Добавляем глобальные анимации
+// Добавляем глобальные анимации и медиазапрос (ОДИН БЛОК!)
 const style = document.createElement('style');
 style.textContent = `
   @keyframes float {
@@ -255,6 +258,65 @@ style.textContent = `
   .music-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(221, 0, 255, 0.5);
+  }
+
+  /* Медиазапрос для мобильных устройств - используем классы! */
+  @media (max-width: 768px) {
+    .birthday-section {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin: 1rem 0 2rem 0 !important; /* Убрали auto, оставили вертикальные отступы */
+    padding: 1.5rem !important;
+    width: 100% !important;
+    border-radius: 20px !important; /* Чуть меньше скругление на мобильных */
+  }
+    
+    .photo-frame {
+      width: 250px !important;
+      height: 250px !important;
+      margin-top: 1rem !important;
+    }
+    
+    .birthday-content {
+      text-align: center !important;
+    }
+    
+    .birthday-title {
+      font-size: 2rem !important;
+    }
+    
+    .birthday-message {
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+    }
+    
+    .wish-list {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+    }
+    
+    .wish-item {
+      padding: 0.8rem !important;
+    }
+    
+    .wish-emoji {
+      font-size: 1.5rem !important;
+    }
+    
+    .cards {
+      gap: 1rem !important;
+    }
+    
+    .card {
+      width: 160px !important;
+      padding: 1rem !important;
+    }
+    
+    .music-button {
+      margin-top: 0.5rem !important;
+      padding: 0.8rem 1.5rem !important;
+      font-size: 1rem !important;
+    }
   }
 `;
 document.head.appendChild(style);
